@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <form action="" method="post">
+      <div class="form-group">
+        <label for="">Input text</label>
+        <input type="text" name="name" class="name" onkeyup="showSelect()" target='{
+          "title":"Your Name",
+          "field_type":"text",
+          "field_name":"your-name",
+          "configs":{
+             "required":true,
+             "settings":{
+                "defaultValue":""
+             },
+             "visibility":{
+                "type":"show",
+                "match":"all",
+                "rules":[
+    
+                ],
+                "enabled":false
+             },
+             "description":"",
+             "placeholder":"",
+             "errorMessage":""
+          }
+       }'>
+      </div>
+      <div class="form-group-select" style="display:none">
+        <label for="">The Seclect</label>
+        <select class="select-condition" onchange="showCondition()">
+          <option value="Apple">Apple</option>
+          <option value="Orange">Orange</option>
+          <option value="Mango">Mango</option>
+        </select>
+      </div>
+      <div class="form-group-radio" id="radio" style="display:none">
+          <label for="">Check radio</label>:<br>
+          <label class="radio-inline">
+              <input type="radio" name="optradio" checked>Option 1
+          </label>
+          <label class="radio-inline">
+              <input type="radio" name="optradio">Option 2
+          </label>
+          <label class="radio-inline">
+              <input type="radio" name="optradio">Option 3
+          </label>
+        
+      </div>
+      <div class="form-group-checkbox"  id="checkbox" style="display:none">
+        <label for="">Check box</label>:<br>
+        <label class="checkbox-inline">
+          <input type="checkbox" value="" checked>Option 0
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" value="">Option 1
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" value="">Option 2
+        </label>
+        <label class="checkbox-inline">
+          <input type="checkbox" value="">Option 3
+        </label>
+      </div>
+    </form>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+<script type="text/javascript">
+  function showSelect() {
+    var value = JSON.parse(document.getElementsByClassName("name")[0].getAttribute("target"));
+    
+    var valueInput = document.getElementsByClassName("name")[0].value;
+    //console.log(valueInput);
+    if ( valueInput === value.title ) {
+      document.getElementsByClassName("form-group-select")[0].setAttribute("style","display:block;");
+    } 
+    else if( valueInput !== value.title ) {
+
+      document.getElementsByClassName("form-group-select")[0].setAttribute("style","display:none;");
+      document.getElementsByClassName("form-group-radio")[0].setAttribute("style","display:none;");
+      document.getElementsByClassName("form-group-checkbox")[0].setAttribute("style","display:none;");
+
+    }
+  }
+
+  function showCondition() {
+
+    var condition = document.getElementsByClassName("select-condition")[0].value;
+      if ( condition === "Orange" ) {
+        document.getElementsByClassName("form-group-radio")[0].setAttribute("style","display:block;");
+      }
+      if ( condition === "Mango" ) {
+        document.getElementsByClassName("form-group-checkbox")[0].setAttribute("style","display:block;");
+      }
+      if ( condition !== "Orange" ) {
+        document.getElementsByClassName("form-group-radio")[0].setAttribute("style","display:none;");
+      }
+      if ( condition !== "Mango" ) {
+        document.getElementsByClassName("form-group-checkbox")[0].setAttribute("style","display:none;");
+      }
+
+  }
+  
+</script>
